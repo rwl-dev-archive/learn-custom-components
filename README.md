@@ -6,6 +6,7 @@
 - Catalyst
 - Stencil
 - LitElement
+- Svelte
 
 ## やること
 - [ ] 単純な色付き文字の表示
