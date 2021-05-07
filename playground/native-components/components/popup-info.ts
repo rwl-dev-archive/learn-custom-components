@@ -1,3 +1,7 @@
+export interface PopupInfoProps {
+  text: string
+}
+
 export class PopupInfo extends HTMLElement {
   constructor() {
     super();

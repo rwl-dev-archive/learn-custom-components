@@ -22,6 +22,18 @@ export const tagname = (conponentName: string): string =>
   addHyphenBeforeUpperCaseText(initialTextToLowerCase(conponentName));
 
 interface defaultProps {
-  [key: string]: any
+  [key: string]: string;
 }
 
+const extractProps = <T = defaultProps>(props: T): string => {
+  let propsList: string[] = [];
+  for (const prop in props) {
+    propsList.push(`${prop}="${props[prop]}"`);
+  }
+  return propsList.join(" ");
+};
+
+export const generateElement = <T = defaultProps>(
+  constructor: CustomElementConstructor,
+  props: T
+) => `<${tagname(constructor.name)} ${extractProps(props)}></${tagname(constructor.name)}>`;
