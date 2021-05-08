@@ -41,5 +41,9 @@ const extractProps = <T = defaultProps>(props: T): string => {
  */
 export const generateElement = <T = defaultProps>(
   constructor: CustomElementConstructor,
-  props: T
-) => `<${tagname(constructor.name)} ${extractProps(props)}></${tagname(constructor.name)}>`;
+  props: T,
+  slot: string
+): string =>
+  `<${tagname(constructor.name)} ${extractProps(props)} />${slot}</${tagname(
+    constructor.name
+  )}>`;

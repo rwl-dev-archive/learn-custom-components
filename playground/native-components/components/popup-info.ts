@@ -1,5 +1,5 @@
 export interface PopupInfoProps {
-  text: string
+  text: string;
 }
 
 export class PopupInfo extends HTMLElement {
@@ -7,6 +7,7 @@ export class PopupInfo extends HTMLElement {
     super();
 
     const shadow = this.attachShadow({ mode: "open" });
+    const slot = document.createElement("slot");
     const wrapper = document.createElement("span");
     wrapper.setAttribute("class", "wrapper");
     const info = document.createElement("span");
@@ -25,5 +26,6 @@ export class PopupInfo extends HTMLElement {
     shadow.appendChild(style);
     shadow.appendChild(wrapper);
     wrapper.appendChild(info);
+    wrapper.appendChild(slot);
   }
 }

@@ -10,5 +10,5 @@ const popupInfoProps: PopupInfoProps = {
 customElements.define(tagname(PopupInfo.name), PopupInfo);
 
 document.querySelector("#app").innerHTML = `
-  ${generateElement<PopupInfoProps>(PopupInfo, popupInfoProps)}
+  ${generateElement<PopupInfoProps>(PopupInfo, popupInfoProps, "あいうえお")}
 `;
