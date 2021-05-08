@@ -25,6 +25,9 @@ interface defaultProps {
   [key: string]: string;
 }
 
+/**
+ * Propsを受け取ってHTMLタグの属性（`key="value"`）として返す
+ */
 const extractProps = <T = defaultProps>(props: T): string => {
   let propsList: string[] = [];
   for (const prop in props) {
@@ -33,6 +36,9 @@ const extractProps = <T = defaultProps>(props: T): string => {
   return propsList.join(" ");
 };
 
+/**
+ * HTMLタグを生成する
+ */
 export const generateElement = <T = defaultProps>(
   constructor: CustomElementConstructor,
   props: T
