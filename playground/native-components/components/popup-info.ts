@@ -1,6 +1,18 @@
+import { getCss } from "../util";
+import type { DefaultClasses } from "../util";
+
 export interface PopupInfoProps {
   text: string;
 }
+
+const defaultClass: DefaultClasses = [
+  {
+    selector: ".wrapper",
+    properties: {
+      color: "red",
+    },
+  },
+];
 
 export class PopupInfo extends HTMLElement {
   constructor() {
@@ -17,11 +29,7 @@ export class PopupInfo extends HTMLElement {
     info.textContent = text;
 
     const style = document.createElement("style");
-    style.textContent = `
-    .wrapper {
-      color: red;
-    }
-    `;
+    style.textContent = getCss(defaultClass);
 
     shadow.appendChild(style);
     shadow.appendChild(wrapper);

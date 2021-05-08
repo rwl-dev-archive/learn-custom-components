@@ -1,3 +1,5 @@
+import { PropertiesHyphen } from "csstype";
+
 /**
  * 頭文字を小文字に変換する
  */
@@ -24,6 +26,38 @@ export const tagname = (conponentName: string): string =>
 interface defaultProps {
   [key: string]: string;
 }
+
+export interface DefaultClass {
+  selector: keyof HTMLElementTagNameMap | string;
+  properties: PropertiesHyphen;
+}
+
+export type DefaultClasses = DefaultClass[];
+
+/**
+ * オブジェクトを受け取ってCSSの属性（`key: value`）に整形する
+ */
+const shapedCssProperties = (properties: PropertiesHyphen): string => {
+  const propertieList: string[] = [];
+  for (const key in properties) {
+    propertieList.push(`${key}: ${properties[key]}`);
+  }
+
+  return `{ ${propertieList.join("\n")} }`;
+};
+
+/** 
+ * オブジェクトをもとにCSSの文字列を返す
+ */
+export const getCss = (cssList: DefaultClasses): string => {
+  return cssList
+    .map((css) => {
+      let shapedString: string = "";
+      shapedString += `${css.selector} ${shapedCssProperties(css.properties)}`;
+      return shapedString;
+    })
+    .join("");
+};
 
 /**
  * Propsを受け取ってHTMLタグの属性（`key="value"`）として返す
