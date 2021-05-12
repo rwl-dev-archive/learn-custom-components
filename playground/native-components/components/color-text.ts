@@ -1,7 +1,7 @@
 import { getCss } from "../util";
 import type { DefaultClasses } from "../util";
 
-export interface PopupInfoProps {
+export interface ColorTextProps {
   text: string;
 }
 
@@ -14,7 +14,7 @@ const defaultClass: DefaultClasses = [
   },
 ];
 
-export class PopupInfo extends HTMLElement {
+export class ColorText extends HTMLElement {
   constructor() {
     super();
 

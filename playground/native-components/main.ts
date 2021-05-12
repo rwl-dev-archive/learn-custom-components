@@ -1,14 +1,13 @@
-import { PopupInfo } from "./components/popup-info";
-import type { PopupInfoProps } from "./components/popup-info";
+import { ColorText, ColorTextProps } from "./components/color-text";
 import { tagname, generateElement } from "./util";
 import "./style.scss";
 
-const popupInfoProps: PopupInfoProps = {
+const ColorTextProps: ColorTextProps = {
   text: "あそまか といか",
 };
 
-customElements.define(tagname(PopupInfo.name), PopupInfo);
+customElements.define(tagname(ColorText.name), ColorText);
 
 document.querySelector("#app").innerHTML = `
-  ${generateElement<PopupInfoProps>(PopupInfo, popupInfoProps, "あいうえお")}
+  ${generateElement<ColorTextProps>(ColorText, ColorTextProps, "あいうえお")}
 `;
